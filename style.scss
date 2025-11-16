@@ -1,34 +1,35 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
-/////////--RESET-PADRÃO--\\\\\\\\\
+// RESET-PADRÃO //
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
   text-decoration: none;
   font-family: "inter", sans-serif;
 }
-////////////////\\\\\\\\\\\\\\\\\\
 
-/////////--HEADER--\\\\\\\\\\
+// === DEFINIÇÃO DAS VARIÁVEIS DE MEDIA QUERIES ===
+$breakpoint-desktop-s: 1200px;
+$breakpoint-tablet: 780px;
+$breakpoint-mobile: 480px;
+$breakpoint-tiny: 375px;
+
+// --- HEADER ---
 header {
   height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: (url(./assets/bannerHeader.png));
+  background-image: url("./assets/bannerHeader.png");
   background-repeat: no-repeat;
   background-size: contain;
 
-  @media (max-width: 780px) {
+  @media (max-width: $breakpoint-tablet) {
     background-image: none;
-    display: flex;
-    height: 95vh;
+    height: auto;
     width: 100%;
-
-    img {
-      max-width: 35%;
-    }
+    padding-bottom: 2rem;
   }
 
   .box-header {
@@ -41,24 +42,70 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    @media (max-width: 780px) {
+
+    @media (max-width: $breakpoint-tablet) {
       width: 95%;
+      flex-wrap: nowrap;
+      height: auto;
+      padding: 1rem 0;
+      justify-content: space-between;
+    }
+
+    img {
+      max-width: 40%;
     }
 
     nav {
-      width: 40%;
+      width: 50%;
       height: 10vh;
       display: flex;
       align-items: center;
       justify-content: space-evenly;
-      @media (max-width: 780px) {
-        width: 55%;
+      padding: 0 0.5rem;
+
+      @media (max-width: $breakpoint-tablet) {
+        width: 50%;
+        height: auto;
+        margin-top: 0;
+        justify-content: space-between;
+        padding: 0 0.5rem;
       }
+      @media (max-width: $breakpoint-tiny) {
+        width: 55%;
+        padding: 0 0.2rem;
+      }
+
       a {
         color: #fff;
         font-family: "Roboto", sans-serif;
         cursor: pointer;
         transition: all 0.3s;
+
+        white-space: wrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 40%;
+
+        @media (max-width: $breakpoint-tablet) {
+          white-space: normal;
+          overflow: visible;
+          text-overflow: clip;
+          max-width: 50%;
+          font-size: 0.8rem;
+          text-align: center;
+          display: inline-block;
+          line-height: 1.2;
+        }
+
+        @media (max-width: $breakpoint-mobile) {
+          font-size: 0.7rem;
+          max-width: 50%;
+        }
+
+        @media (max-width: $breakpoint-tiny) {
+          font-size: 0.6rem;
+        }
+
         &:hover {
           transform: translateY(-5px);
         }
@@ -72,12 +119,11 @@ header {
   display: flex;
   align-items: center;
 
-  @media (max-width: 780px) {
-    display: flex;
+  @media (max-width: $breakpoint-tablet) {
     width: 100%;
-    height: 100vh;
-    align-items: center;
+    height: auto;
     flex-direction: column;
+    padding-top: 1rem;
   }
 
   .box-titulo {
@@ -87,15 +133,13 @@ header {
     flex-direction: column;
     justify-content: space-between;
 
-    @media (max-width: 780px) {
-      display: flex;
-      width: 100%;
-      height: 75vh;
+    @media (max-width: $breakpoint-tablet) {
+      width: 95%;
+      height: auto;
       align-items: center;
-      flex-direction: column;
       text-align: center;
-      justify-content: center;
       justify-content: space-evenly;
+      padding: 1rem 0;
     }
 
     h1 {
@@ -105,65 +149,73 @@ header {
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      @media (max-width: 780px) {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        height: 30vh;
+
+      @media (max-width: $breakpoint-tablet) {
         width: 95%;
-        font-size: 3rem;
+        font-size: 2.5rem;
+        height: auto;
+        padding: 0.5rem 0;
+      }
+      @media (max-width: $breakpoint-tiny) {
+        font-size: 2rem;
       }
     }
+
     p {
       font-size: 1.6rem;
       font-weight: 400;
       color: #04031c;
       width: 65%;
-      @media (max-width: 780px) {
-        display: flex;
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-        height: 30vh;
+
+      @media (max-width: $breakpoint-tablet) {
         width: 95%;
-        font-size: 2rem;
+        font-size: 1.5rem;
+        height: auto;
+        padding-bottom: 1rem;
+      }
+      @media (max-width: $breakpoint-tiny) {
+        font-size: 1.2rem;
       }
     }
   }
+
   .buttons {
     display: flex;
     gap: 1.5rem;
-    @media (max-width: 780px) {
+
+    @media (max-width: $breakpoint-tablet) {
       width: 100%;
       justify-content: center;
+      padding-bottom: 1rem;
     }
-    .btn-primary {
-      border: none;
+
+    .btn-primary,
+    .btn-secondary {
       height: 6.5vh;
-      width: 50%;
       border-radius: 0.625rem;
-      background: linear-gradient(90deg, rgba(17, 115, 212, 0) 100%, #1173d4 0%),
-        linear-gradient(0deg, #1173d4, #1173d4);
-      color: white;
       font-size: 0.875rem;
       font-weight: 400;
       cursor: pointer;
       transition: all 0.3s;
+
       &:hover {
         transform: translateY(-5px);
       }
     }
+
+    .btn-primary {
+      border: none;
+      width: 50%;
+      background: #1173d4;
+      color: white;
+    }
+
     .btn-secondary {
       border: solid 1px #1173d4;
-      height: 6.5vh;
       width: 35%;
-      border-radius: 0.625rem;
       color: #1173d4;
-      font-size: 0.875rem;
       font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s;
+
       &:hover {
         background-color: #1173d4;
         transform: translateY(-5px);
@@ -173,18 +225,17 @@ header {
   }
 }
 
-//////////--BOX CONTAINER--\\\\\\\\\\
+// --- BOX CONTAINER ---
 .box-container {
   background-color: #f8f9fa;
-  height: 80vh;
+  height: auto;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  padding: 3rem 0;
 
-  @media (max-width: 780px) {
-    display: flex;
-    height: 150vh;
+  @media (max-width: $breakpoint-tablet) {
     width: 100%;
   }
 
@@ -197,10 +248,10 @@ header {
     text-align: center;
     justify-content: space-evenly;
 
-    @media (max-width: 780px) {
-      display: flex;
-      height: 170vh;
+    @media (max-width: $breakpoint-tablet) {
+      height: auto;
       width: 100%;
+      padding: 2rem 0;
     }
 
     h2 {
@@ -210,71 +261,82 @@ header {
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      @media (max-width: 780px) {
+
+      @media (max-width: $breakpoint-tablet) {
         font-size: 1.8rem;
       }
     }
+
     p {
       width: 75%;
       font-size: 1.25rem;
       font-weight: 400;
       color: #04031c;
-      @media (max-width: 780px) {
-        display: flex;
+
+      @media (max-width: $breakpoint-tablet) {
         width: 95%;
-        height: 25vh;
-        align-items: center;
-        text-align: center;
+        height: auto;
         font-size: 1rem;
+        padding: 1rem 0;
       }
     }
   }
+
   .cards-container {
     display: flex;
     align-items: center;
     width: 80%;
-    height: 40vh;
+    height: auto;
     justify-content: space-evenly;
+    gap: 2rem;
+    padding-bottom: 2rem;
 
-    @media (max-width: 780px) {
-      display: flex;
+    @media (max-width: $breakpoint-tablet) {
       flex-direction: column;
-      height: 400vh;
       width: 100%;
+      padding: 1rem 0;
     }
 
     .cards {
       width: 25%;
-      height: 30vh;
+      height: auto;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-around;
-      align-items: center;
       box-shadow: 0px 0px 10px 0px #00000040;
       border-radius: 0.8rem;
-      @media (max-width: 780px) {
+      padding: 1.5rem 0;
+
+      @media (max-width: $breakpoint-tablet) {
         width: 70%;
+      }
+      @media (max-width: $breakpoint-mobile) {
+        width: 90%;
       }
 
       .text-card {
-        width: 70%;
-        height: 20vh;
+        width: 90%;
+        height: auto;
         display: flex;
         flex-direction: column;
         text-align: center;
-        justify-content: space-evenly;
+        gap: 0.5rem;
+        padding: 1rem 0;
       }
+
       h3 {
         font-size: 1.25rem;
         font-weight: 600;
         color: #04031c;
       }
+
       p {
-        font-size: 1.125;
+        font-size: 1.125rem;
         font-weight: 400;
         color: #04031c;
       }
+
       img {
         margin-top: 0.7rem;
         max-width: 15%;
@@ -283,20 +345,18 @@ header {
   }
 }
 
-/////////--INFORMAÇÕES DAS MULHERES--\\\\\\\\\\
+// --- INFORMAÇÕES DAS MULHERES ---
 .info-mulheres {
   background-color: #fdefef;
-  height: 170vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  padding-bottom: 2rem;
 
-  @media (max-width: 780px) {
-    display: flex;
-    height: 410vh;
+  @media (max-width: $breakpoint-tablet) {
     width: 100%;
-    font-size: 1.5rem;
   }
 
   h2 {
@@ -314,85 +374,125 @@ header {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    @media (max-width: 780px) {
+
+    @media (max-width: $breakpoint-tablet) {
       font-size: 2rem;
-      height: 5vh;
+      height: auto;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+    }
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 1.5rem;
+      width: 90%;
+      margin-bottom: 1.5rem;
     }
   }
+
   .box-card {
-    width: 70%;
-    height: 150vh;
+    width: 70vw;
+    height: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     font-family: "Roboto", sans-serif;
+    gap: 2rem 0;
 
-    @media (max-width: 780px) {
-      display: flex;
+    @media (max-width: $breakpoint-desktop-s) {
+      width: 80vw;
+      padding-bottom: 1rem;
+    }
+
+    @media (max-width: $breakpoint-tablet) {
       flex-direction: column;
       align-items: center;
-      height: 450vh;
       width: 100%;
+      gap: 2rem;
     }
 
     .card-mulheres {
       background-color: #fefefe;
       width: 20vw;
-      height: 60vh;
+      height: auto;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
+      align-items: flex-start;
+      justify-content: flex-start;
       box-shadow: 0px 4px 4px 0px #00000040;
       border-radius: 1rem;
+      padding: 2rem 1.5rem;
 
-      @media (max-width: 780px) {
-        width: 70%;
+      @media (max-width: $breakpoint-desktop-s) {
+        width: 25vw;
       }
-    }
-    h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      font-weight: bold;
-      color: #000000;
-    }
-    img {
-      max-width: 30%;
-    }
-    ul {
-      height: 35vh;
-      padding-left: 1.5rem;
-    }
-    li {
-      height: 8vh;
-      width: 15vw;
-      color: #000000;
-      font-size: 0.875rem;
-      font-weight: 400;
 
-      @media (max-width: 780px) {
-        width: 50vw;
-        height: 9vh;
+      @media (max-width: $breakpoint-tablet) {
+        width: 70%;
+        height: 450px;
+        overflow-y: auto;
+      }
+      @media (max-width: $breakpoint-mobile) {
+        width: 85%;
+        height: 400px;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #000000;
+        margin-bottom: 1rem;
+        text-align: center;
+        width: 100%;
+      }
+
+      img {
+        max-width: 30%;
+        margin-bottom: 1rem;
+        align-self: center;
+        margin-left: 0;
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: auto;
+        padding-left: 0;
+        width: 100%;
+        list-style-position: inside;
+
+        li {
+          height: auto;
+          width: 100%;
+          color: #000000;
+          font-size: 0.875rem;
+          font-weight: 400;
+          margin-bottom: 0.8rem;
+          text-align: left;
+          padding-left: 0.5rem;
+
+          @media (max-width: $breakpoint-mobile) {
+            font-size: 0.9rem;
+          }
+        }
       }
     }
   }
 }
 
-/////////--INFORMAÇÕES DOS HOMENS--\\\\\\\\\\
+// --- INFORMAÇÕES DOS HOMENS ---
 .info-homens {
   background-color: #f8f9fa;
-  height: 170vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  padding-bottom: 2rem;
 
-  @media (max-width: 780px) {
-    display: flex;
-    height: 360vh;
+  @media (max-width: $breakpoint-tablet) {
     width: 100%;
-    font-size: 1.5rem;
   }
+
   h2 {
     margin-top: 5rem;
     font-size: 2.8rem;
@@ -409,300 +509,274 @@ header {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    @media (max-width: 780px) {
+
+    @media (max-width: $breakpoint-tablet) {
       font-size: 2rem;
-      height: 5vh;
+      height: auto;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 1.5rem;
+      width: 90%;
+      margin-bottom: 1.5rem;
     }
   }
+
   .box-card2 {
     width: 70%;
-    height: 150vh;
+    height: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     font-family: "Roboto", sans-serif;
-    @media (max-width: 780px) {
-      display: flex;
+    gap: 2rem 0;
+
+    @media (max-width: $breakpoint-tablet) {
       flex-direction: column;
       align-items: center;
-      height: 350vh;
       width: 100%;
+      gap: 2rem;
     }
+
     .card-homens {
       background-color: #ffffff;
       width: 20vw;
-      height: 60vh;
+      height: auto;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
+      align-items: flex-start;
+      justify-content: flex-start;
       box-shadow: 0px 4px 4px 0px #00000040;
       border-radius: 1rem;
+      padding: 2rem 1.5rem;
 
-      @media (max-width: 780px) {
-        width: 80%;
+      @media (max-width: $breakpoint-tablet) {
+        width: 70%;
+        height: 450px;
+        overflow-y: auto;
       }
-    }
 
-    h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      font-weight: bold;
-      color: #000000;
-    }
-    img {
-      max-width: 30%;
-    }
-    ul {
-      height: 35vh;
-      padding-left: 1.5rem;
-    }
-    li {
-      height: 6vh;
-      width: 15vw;
-      color: #000000;
-      font-size: 0.875rem;
-      font-weight: 400;
+      @media (max-width: $breakpoint-mobile) {
+        width: 85%;
+        height: 400px;
+      }
 
-      @media (max-width: 780px) {
-        width: 50vw;
-        height: 6vh;
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #000000;
+        margin-bottom: 1rem;
+        text-align: center;
+        width: 100%;
+      }
+
+      img {
+        max-width: 30%;
+        margin-bottom: 1rem;
+        align-self: center;
+        margin-left: 0;
+      }
+
+      ul {
+        height: auto;
+        padding-left: 0;
+        width: 100%;
+        list-style-position: inside;
+
+        li {
+          height: auto;
+          width: 100%;
+          color: #000000;
+          font-size: 0.875rem;
+          font-weight: 400;
+          margin-bottom: 0.8rem;
+          text-align: left;
+          padding-left: 0.5rem;
+
+          @media (max-width: $breakpoint-mobile) {
+            font-size: 0.9rem;
+          }
+        }
       }
     }
   }
 }
 
-/////////--INFORMAÇÕES IMPORTANTES--\\\\\\\\\\
+// --- INFORMAÇÕES IMPORTANTES ---
 .info-importantes {
-  height: 75vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  @media (max-width: 780px) {
-    display: flex;
-    height: 150vh;
+  padding: 2rem 0;
+
+  @media (max-width: $breakpoint-tablet) {
     width: 100%;
   }
+
   h2 {
-    margin-top: 3rem;
+    margin-top: 1rem;
     font-size: 2.8rem;
     text-align: center;
-    height: 20vh;
+    height: 10vh;
     background: linear-gradient(to right, #1173d4 0%, #33cc73 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    @media (max-width: 780px) {
-      margin-top: 1rem;
-      height: 10vh;
+
+    @media (max-width: $breakpoint-tablet) {
+      height: auto;
       width: 95%;
       font-size: 2rem;
     }
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 1.5rem;
+    }
   }
 }
+
 .cards-importantes {
-  width: 70%;
-  height: 80vh;
+  width: 80%;
+  height: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  @media (max-width: 780px) {
-    display: flex;
-    height: 125vh;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-top: 2rem;
+
+  @media (max-width: $breakpoint-tablet) {
     width: 100%;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    padding-bottom: 2rem;
   }
-  .card1 {
-    background-color: #f9d5e5;
-    height: 20vh;
-    width: 40%;
-    border-radius: 0.625rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    @media (max-width: 780px) {
-      height: 25vh;
-      width: 90%;
-    }
 
-    .coracao {
-      width: 90%;
-      font-size: 1.25rem;
-      font-weight: 700;
-      font-weight: bold;
-      color: #ad346a;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 0.7rem;
-      margin-bottom: 1rem;
-    }
-    p {
-      font-size: 1rem;
-      font-weight: 400;
-      color: #ad346a;
-      padding: 0 2rem 1rem 1rem;
-      @media (max-width: 780px) {
-        justify-content: center;
-        height: 20vh;
-        font-size: 1.1rem;
-        width: 95%;
-      }
-    }
-  }
-  .card2 {
-    background-color: #cfe2f3;
-    height: 20vh;
-    width: 40%;
-    border-radius: 0.625rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-
-    @media (max-width: 780px) {
-      height: 25vh;
-      width: 90%;
-    }
-    .escudo {
-      width: 90%;
-      font-size: 1.25rem;
-      font-weight: 700;
-      font-weight: bold;
-      color: #2769a3;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 0.7rem;
-      margin-bottom: 1rem;
-    }
-    p {
-      font-size: 1rem;
-      font-weight: 400;
-      color: #2769a3;
-      @media (max-width: 780px) {
-        justify-content: center;
-        height: 20vh;
-        font-size: 1.1rem;
-        width: 95%;
-      }
-    }
-  }
-  .card3 {
-    background-color: #d4edda;
-    height: 20vh;
-    width: 40%;
-    border-radius: 0.625rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-
-    @media (max-width: 780px) {
-      height: 25vh;
-      width: 90%;
-    }
-    .vacina {
-      width: 90%;
-      font-size: 1.25rem;
-      font-weight: 700;
-      font-weight: bold;
-      color: #244a2d;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 0.7rem;
-      margin-bottom: 1rem;
-    }
-    p {
-      font-size: 1rem;
-      font-weight: 400;
-      color: #244a2d;
-      @media (max-width: 780px) {
-        justify-content: center;
-        height: 20vh;
-        font-size: 1.1rem;
-        width: 95%;
-      }
-    }
-  }
+  .card1,
+  .card2,
+  .card3,
   .card4 {
-    background-color: #ffe9c2;
-    height: 20vh;
-    width: 40%;
+    height: auto;
+    width: 48%;
     border-radius: 0.625rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 1rem;
 
-    @media (max-width: 780px) {
-      height: 25vh;
+    @media (max-width: $breakpoint-tablet) {
       width: 90%;
     }
+
+    .coracao,
+    .escudo,
+    .vacina,
     .cerebro {
       width: 90%;
       font-size: 1.25rem;
       font-weight: 700;
-      font-weight: bold;
-      color: #976c00;
       display: flex;
       align-items: center;
       gap: 0.5rem;
       margin-top: 0.7rem;
       margin-bottom: 1rem;
     }
+    .coracao {
+      color: #ad346a;
+    }
+
     p {
       font-size: 1rem;
       font-weight: 400;
-      color: #976c00;
-      @media (max-width: 780px) {
-        justify-content: center;
-        height: 20vh;
+      padding: 0 2rem 1rem 1rem;
+
+      @media (max-width: $breakpoint-tablet) {
+        height: auto;
         font-size: 1.1rem;
         width: 95%;
       }
+      @media (max-width: $breakpoint-mobile) {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  // Cores de fundo e texto específicos
+  .card1 {
+    background-color: #f9d5e5;
+    p {
+      color: #ad346a;
+    }
+  }
+
+  .card2 {
+    background-color: #cfe2f3;
+    .escudo {
+      color: #2769a3;
+    }
+    p {
+      color: #2769a3;
+    }
+  }
+
+  .card3 {
+    background-color: #d4edda;
+    .vacina {
+      color: #244a2d;
+    }
+    p {
+      color: #244a2d;
+    }
+  }
+
+  .card4 {
+    background-color: #ffe9c2;
+    .cerebro {
+      color: #976c00;
+    }
+    p {
+      color: #976c00;
     }
   }
 }
 
-/////////--FOOTER--\\\\\\\\\\
+// --- FOOTER ---
 .footer {
   background-color: #313461;
   width: 100%;
-  height: 65vh;
-  @media (max-width: 780px) {
-    height: 120vh;
-  }
+  height: auto;
+
   .container-footer {
     width: 100%;
-    height: 50vh;
+    height: auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
     justify-content: space-around;
+    align-items: flex-start;
+    padding-top: 2rem;
 
-    @media (max-width: 780px) {
-      display: flex;
+    @media (max-width: $breakpoint-tablet) {
       flex-direction: column;
       align-items: center;
-      height: 100vh;
+      padding-top: 2rem;
+      gap: 1.5rem;
     }
 
     .card-footer {
-      height: 30vh;
+      height: auto;
       width: 20vw;
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
-      @media (max-width: 780px) {
+      gap: 1rem;
+
+      @media (max-width: $breakpoint-tablet) {
         width: 90%;
         align-items: center;
       }
+
       h2 {
         font-family: "Poppins", sans-serif;
         font-size: 1rem;
@@ -710,38 +784,54 @@ header {
         font-weight: 700;
         margin-bottom: 0;
       }
+
       p {
         font-family: "Poppins", sans-serif;
         font-size: 1rem;
         font-weight: 400;
         color: #fff;
-        @media (max-width: 780px) {
-          align-items: center;
+
+        @media (max-width: $breakpoint-tablet) {
           text-align: center;
         }
+
+        @media (max-width: $breakpoint-mobile) {
+          text-align: center;
+          font-size: 0.8rem;
+        }
       }
+
       img {
         object-fit: cover;
         max-width: 60%;
       }
+
       ul {
         list-style: none;
+
         li {
           flex-direction: column;
           justify-content: space-around;
           display: flex;
           margin-top: 0.5rem;
-          @media (max-width: 780px) {
+
+          @media (max-width: $breakpoint-tablet) {
             align-items: center;
             text-align: center;
           }
+
           a {
             color: #fff;
             font-size: 1rem;
             font-weight: 400;
-            height: 5vh;
+            height: auto;
             cursor: pointer;
             transition: all 0.3s;
+
+            @media (max-width: $breakpoint-mobile) {
+              font-size: 0.8rem;
+            }
+
             &:hover {
               transform: translateY(-5px);
             }
@@ -757,15 +847,22 @@ header {
     display: flex;
     color: #ffffff;
     width: 100%;
-    height: 15vh;
+    height: 10vh;
     font-size: 1rem;
     align-items: center;
     justify-content: center;
     border-top: 1px solid #9fabbc;
-    @media (max-width: 780px) {
-      height: 20vh;
+
+    @media (max-width: $breakpoint-tablet) {
+      height: auto;
+      min-height: 8vh;
       align-items: center;
       text-align: center;
+      padding: 1rem 0;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 0.8rem;
     }
   }
 }
